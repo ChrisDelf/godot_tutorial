@@ -17,9 +17,14 @@ func _process(_delta):
 	
 	# laser shooting input
 	if Input.is_action_pressed("primary action") and can_laser:
+		#randomly selected a marker 2d for the laser start
+		var laser_markers = $LaserStartPositions.get_children()
+		#randi() followed by % then the max size of the list to create a simple randomizer
+		var selected_laser = laser_markers[randi() % laser_markers.size()]
 		can_laser = false
 		$LaserCooldown.start()
-		laser.emit()
+		# emit the position when selected
+		laser.emit(selected_laser.global_position)
 		
 	
 	# Grenade Tossing input
