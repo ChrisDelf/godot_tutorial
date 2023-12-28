@@ -1,17 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkij6k8fr8uig"]
+[gd_scene load_steps=12 format=3 uid="uid://bkij6k8fr8uig"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_ftwme"]
+[ext_resource type="Texture2D" uid="uid://bc8jcn5t0mj5k" path="res://graphics/ground/stones.png" id="2_8kl8o"]
+[ext_resource type="Texture2D" uid="uid://bcqg6fwsi05dl" path="res://graphics/decals/dirt_patch.png" id="3_i1rnx"]
 [ext_resource type="PackedScene" uid="uid://ks6mfi52ji7n" path="res://Scenes/Objects/Gate/gate.tscn" id="3_wxjla"]
+[ext_resource type="Texture2D" uid="uid://bww7crirxytq5" path="res://graphics/tilesets/outside_walls.png" id="4_njweh"]
 [ext_resource type="PackedScene" uid="uid://ya1hunj443tk" path="res://Scenes/Player/player.tscn" id="4_njyak"]
+[ext_resource type="Texture2D" uid="uid://c3qd1nom08l6v" path="res://graphics/tilesets/soil.png" id="5_6x7cm"]
+[ext_resource type="PackedScene" uid="uid://fkgppv3wonn8" path="res://Scenes/Objects/House/house.tscn" id="6_w2kbj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86qko"]
+resource_name = "walls"
+texture = ExtResource("4_njweh")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgeha"]
+texture = ExtResource("5_6x7cm")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u6e3q"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_86qko")
+sources/1 = SubResource("TileSetAtlasSource_fgeha")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ftwme")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Soil" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(487, 325)
+texture = ExtResource("2_8kl8o")
+region_enabled = true
+region_rect = Rect2(-1753.15, -898.367, 6378.85, 4911.04)
+
+[node name="Decoration" type="Sprite2D" parent="Ground"]
+modulate = Color(0.988235, 0.882353, 0.568627, 1)
+position = Vector2(1543, 577)
+texture = ExtResource("3_i1rnx")
+
+[node name="TileMap" type="TileMap" parent="Ground"]
+scale = Vector2(0.875634, 1.01047)
+tile_set = SubResource("TileSet_u6e3q")
+format = 2
+layer_0/name = "Soil"
+layer_0/tile_data = PackedInt32Array(-262135, 65537, 1, -196599, 1, 1, -131063, 1, 1, -65527, 1, 1, 9, 1, 1, 65545, 1, 1, -262134, 65537, 1, -196598, 65537, 1, -131062, 65537, 1, -65526, 65537, 1, 10, 65537, 1, 65546, 65537, 1, 131081, 65537, 1, 196617, 65537, 1, 262153, 65537, 1, 327689, 65537, 1, 393225, 65537, 1, 458761, 65537, 1, 131082, 65537, 1, 196618, 65537, 1, 262154, 65537, 1, 327690, 65537, 1, 393226, 65537, 1, 458762, 65537, 1, 131083, 65537, 1, 196619, 65537, 1, 262155, 65537, 1, 327691, 65537, 1, 393227, 65537, 1, 458763, 65537, 1, -393213, 65537, 1, -327677, 65537, 1, -262141, 65537, 1, -393212, 65537, 1, -327676, 65537, 1, -262140, 65537, 1, -393211, 65537, 1, -327675, 65537, 1, -262139, 65537, 1, -393210, 65537, 1, -327674, 65537, 1, -262138, 65537, 1, -393209, 65537, 1, -327673, 65537, 1, -262137, 65537, 1, -393208, 65537, 1, -327672, 65537, 1, -262136, 65537, 1, -393207, 65537, 1, -327671, 65537, 1, -393206, 65537, 1, -327670, 65537, 1)
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array(-262138, 65536, 0, -262137, 65536, 0, -262136, 65536, 0, -262135, 65536, 0, -262134, 131072, 1, -196598, 0, 2, -131062, 0, 2, -65526, 0, 2, 65546, 131072, 2, 65545, 65536, 1, 131081, 0, 2, 196617, 0, 2, 262153, 0, 2, 327689, 0, 2, 393225, 131072, 2, 10, 0, 2)
+
+[node name="House" parent="Ground" instance=ExtResource("6_w2kbj")]
+position = Vector2(1231, 2122)
 
 [node name="Gate" parent="." instance=ExtResource("3_wxjla")]
 position = Vector2(413, -524)
 
 [node name="Player" parent="." instance=ExtResource("4_njyak")]
 position = Vector2(452, 329)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
 
