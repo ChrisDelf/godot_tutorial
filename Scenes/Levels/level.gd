@@ -5,6 +5,7 @@ var laser_scene: PackedScene = preload("res://Scenes/projectiles/laser.tscn")
 var grenade_scene: PackedScene = preload("res://Scenes/projectiles/grenade.tscn")
 
 
+
 func _on_gate_player_entered_gate(body):
 	print("Player has entered gate")
 	print(body)
@@ -18,8 +19,10 @@ func _on_player_laser(position, direction):
 	laser.position = position
 	laser.rotation_degrees  = rad_to_deg(direction.angle()) + 90
 	laser.direction = direction
+	
 	# now we add laser to the node tree
 	$Projectiles.add_child(laser)
+	
 
 
 
