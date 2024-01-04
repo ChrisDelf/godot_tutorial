@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ya1hunj443tk"]
+[gd_scene load_steps=9 format=3 uid="uid://ya1hunj443tk"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_563l4"]
 [ext_resource type="Texture2D" uid="uid://b033x3yhl3kdh" path="res://graphics/player/player.png" id="1_usmw4"]
@@ -8,7 +8,7 @@
 radius = 63.0317
 
 [sub_resource type="Gradient" id="Gradient_afsk6"]
-colors = PackedColorArray(0.2, 0.631373, 1, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.2, 0.631373, 1, 0.376471, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_smpka"]
 gradient = SubResource("Gradient_afsk6")
@@ -23,6 +23,9 @@ scale_min = 0.5
 scale_max = 0.8
 color = Color(0.670588, 0.968627, 0.937255, 0.443137)
 color_ramp = SubResource("GradientTexture1D_smpka")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_03vn7"]
+polygon = PackedVector2Array(90, -7, 98, -6, 104, -1, 110, 0, 116, 1, 120, 5, 130, 6, 131, 8, 129, 11, 132, 12, 136, 10, 139, 13, 141, 20, 141, 27, 138, 34, 135, 37, 132, 35, 129, 35, 128, 38, 129, 40, 119, 41, 116, 37, 113, 42, 109, 46, 105, 47, 103, 48, 103, 53, 102, 55, 100, 56, 93, 57, 69, 56, 67, 54, 65, 51, 67, 48, 72, 46, 72, 44, 52, 44, 50, 43, 48, 45, 44, 48, 40, 49, 35, 49, 32, 50, 29, 52, 21, 56, 14, 60, 7, 62, 2, 64, -5, 64, -15, 63, -21, 62, -24, 59, -28, 55, -30, 50, -33, 47, -35, 42, -36, 38, -36, 36, -39, 35, -42, 33, -44, 30, -45, 28, -45, 25, -44, 22, -44, 19, -49, 16, -51, 12, -53, 7, -53, 1, -53, -4, -53, -12, -52, -17, -50, -21, -48, -24, -46, -27, -45, -32, -43, -35, -40, -39, -34, -42, -32, -43, -28, -44, -24, -43, -22, -42, -21, -44, -20, -48, -10, -53, -6, -53, -4, -51, 0, -54, 3, -55, 8, -56, 14, -56, 18, -55, 20, -54, 23, -56, 26, -57, 30, -57, 33, -57, 37, -54, 39, -50, 42, -46, 43, -44, 45, -43, 50, -39, 52, -35, 51, -33, 54, -31, 55, -27, 56, -25, 62, -26, 68, -22, 73, -18, 83, -7)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
@@ -62,6 +65,9 @@ process_material = SubResource("ParticleProcessMaterial_6iebw")
 texture = ExtResource("3_kxhtp")
 lifetime = 0.2
 one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_03vn7")
 
 [connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
 [connection signal="timeout" from="GrenadeTimer" to="." method="_on_grenade_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkij6k8fr8uig"]
+[gd_scene load_steps=17 format=3 uid="uid://bkij6k8fr8uig"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_ftwme"]
 [ext_resource type="Texture2D" uid="uid://bc8jcn5t0mj5k" path="res://graphics/ground/stones.png" id="2_8kl8o"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://fkgppv3wonn8" path="res://Scenes/Objects/House/house.tscn" id="6_w2kbj"]
 [ext_resource type="PackedScene" uid="uid://67bkgumsitrn" path="res://Scenes/Objects/SteamVent/steam_vent.tscn" id="7_6pxgn"]
 [ext_resource type="PackedScene" uid="uid://cr5chd03vfp2w" path="res://Scenes/Objects/billboard.tscn" id="8_n1ftb"]
+[ext_resource type="PackedScene" uid="uid://kvck00fcqhaq" path="res://Scenes/Objects/LightFanAnimations/light_fan_animations.tscn" id="8_uiljr"]
 [ext_resource type="PackedScene" uid="uid://de45sjttvmy3y" path="res://Scenes/Objects/Bed/bed.tscn" id="9_0iv2k"]
+[ext_resource type="PackedScene" uid="uid://cy8l0q357pdib" path="res://Scenes/Objects/WallLamp/wall_lamp.tscn" id="12_runih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86qko"]
 resource_name = "walls"
@@ -102,7 +104,7 @@ script = ExtResource("1_ftwme")
 
 [node name="Soil" type="Sprite2D" parent="Ground"]
 texture_repeat = 2
-position = Vector2(487, 325)
+position = Vector2(436, 544)
 texture = ExtResource("2_8kl8o")
 region_enabled = true
 region_rect = Rect2(-1753.15, -898.367, 6378.85, 4911.04)
@@ -127,6 +129,10 @@ layer_1/tile_data = PackedInt32Array(-262138, 65536, 0, -262137, 65536, 0, -2621
 [node name="SteamVent" parent="Ground" instance=ExtResource("7_6pxgn")]
 position = Vector2(6, 555)
 
+[node name="LightFanAnimations" parent="Ground" instance=ExtResource("8_uiljr")]
+position = Vector2(-973, 901)
+rotation = -1.57952
+
 [node name="Gate" parent="." instance=ExtResource("3_wxjla")]
 position = Vector2(413, -524)
 
@@ -145,6 +151,12 @@ position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
 
+[node name="WallLamp" parent="." instance=ExtResource("12_runih")]
+position = Vector2(3141, 1306)
+rotation = -1.57952
+
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_leave" from="Ground/House" to="." method="_on_house_player_leave"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
