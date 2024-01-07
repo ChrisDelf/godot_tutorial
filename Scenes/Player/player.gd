@@ -3,6 +3,9 @@ extends CharacterBody2D
 var can_laser: bool = true
 var can_grenade: bool = true
 
+@export var max_speed: int = 500
+var speed: int = max_speed
+
 #custom signals
 signal laser(position, direction)
 signal grenade(position, direction)
@@ -11,7 +14,7 @@ func _process(_delta):
 	
 	#input
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * 500
+	velocity = direction * speed
 	#move and slide uses slider already
 	move_and_slide()
 	
