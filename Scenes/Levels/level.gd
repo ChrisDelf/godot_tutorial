@@ -21,7 +21,7 @@ func _on_player_laser(position1, direction):
 	
 	# now we add laser to the node tree
 	$Projectiles.add_child(laser)
-	
+	$UI.update_laser_text()
 
 
 
@@ -30,7 +30,7 @@ func _on_player_grenade(position1, direction):
 	grenade.position = position1
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
-	
+	$UI.update_grenade_text()
 	
 
 

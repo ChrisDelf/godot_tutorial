@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkij6k8fr8uig"]
+[gd_scene load_steps=5 format=3 uid="uid://bkij6k8fr8uig"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_ftwme"]
 [ext_resource type="TileSet" uid="uid://eibyait7cpcw" path="res://Scenes/Levels/house.tres" id="2_easko"]
 [ext_resource type="PackedScene" uid="uid://ya1hunj443tk" path="res://Scenes/Player/player.tscn" id="4_njyak"]
+[ext_resource type="PackedScene" uid="uid://cwlmxlnwuubbf" path="res://Scenes/UserInterface/ui.tscn" id="4_yatoy"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ftwme")
@@ -28,6 +29,8 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("4_yatoy")]
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]

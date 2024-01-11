@@ -143,7 +143,6 @@ rotation = -1.57952
 [node name="WallLamp" parent="Ground" index="8" instance=ExtResource("11_hn6ca")]
 position = Vector2(3146, 1173)
 rotation = -1.54697
-scale = Vector2(1, 1)
 
 [node name="Gate" parent="." index="2" instance=ExtResource("2_eqrxr")]
 position = Vector2(491, -1307)
