@@ -150,7 +150,4 @@ position = Vector2(491, -1307)
 [node name="Player" parent="." index="3"]
 position = Vector2(533, -341)
 
-[node name="Camera2D" parent="Player" index="7"]
-metadata/_edit_lock_ = true
-
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
