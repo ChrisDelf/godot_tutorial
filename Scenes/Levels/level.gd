@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelParent
 
 # we are preloading a scene make sure you use a file ending in tscn
 var laser_scene: PackedScene = preload("res://Scenes/projectiles/laser.tscn")
@@ -6,9 +7,7 @@ var grenade_scene: PackedScene = preload("res://Scenes/projectiles/grenade.tscn"
 
 
 
-func _on_gate_player_entered_gate(_body):
-	var tween = create_tween()
-	tween.tween_property($Player, "speed",0,0.5)
+
 
 	
 
@@ -22,7 +21,7 @@ func _on_player_laser(position1, direction):
 	
 	# now we add laser to the node tree
 	$Projectiles.add_child(laser)
-	
+	$UI.update_laser_text()
 
 
 
@@ -31,7 +30,7 @@ func _on_player_grenade(position1, direction):
 	grenade.position = position1
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
-	
+	$UI.update_grenade_text()
 	
 
 

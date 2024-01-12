@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scenes/projectiles/laser.gd" id="1_qttod"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qc700"]
-radius = 11.0
-height = 156.0
+radius = 5.0
+height = 134.0
 
 [node name="Laser" type="Area2D"]
 collision_layer = 8
@@ -13,8 +13,17 @@ collision_mask = 7
 script = ExtResource("1_qttod")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-0.75, 4)
+scale = Vector2(1.02308, 1)
 texture = ExtResource("1_pxrfb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_qc700")
+
+[node name="Selfdestruct" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Selfdestruct" to="." method="_on_selfdestruct_timeout"]

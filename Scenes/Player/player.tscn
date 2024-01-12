@@ -50,13 +50,13 @@ one_shot = true
 [node name="LaserStartPositions" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(138, 22)
+position = Vector2(146, 22)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(135, 14)
+position = Vector2(143, 13)
 
 [node name="Marker2D3" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(135, 32)
+position = Vector2(143, 32)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(137, 23)
