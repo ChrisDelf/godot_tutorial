@@ -11,6 +11,7 @@ var speed: int = max_speed
 #custom signals
 signal laser(position, direction)
 signal grenade(position, direction)
+#signal update_stats
 
 func _process(_delta):
 	
@@ -57,3 +58,6 @@ func _on_laser_cooldown_timeout():
 
 func _on_grenade_timer_timeout():
 	can_grenade = true
+
+
+	

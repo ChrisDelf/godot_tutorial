@@ -49,3 +49,5 @@ func _on_house_player_leave(_body):
 	var tween = get_tree().create_tween()
 	#zooms out when the character enters the house.
 	tween.tween_property($Player/Camera2D, "zoom", Vector2(.6,.6),1)
+
+

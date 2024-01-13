@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwigldtvqgkr0"]
+[gd_scene load_steps=15 format=3 uid="uid://bwigldtvqgkr0"]
 
 [ext_resource type="PackedScene" uid="uid://bkij6k8fr8uig" path="res://Scenes/Levels/level.tscn" id="1_w2l05"]
 [ext_resource type="PackedScene" uid="uid://c756wyoe6i15b" path="res://Scenes/Objects/Toilet/toilet.tscn" id="2_t6400"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7vd0ntei3uf" path="res://Scenes/Objects/Box/box.tscn" id="6_1ueej"]
 [ext_resource type="Texture2D" uid="uid://bllsqk2kqi8l5" path="res://graphics/lights/textures/circle.png" id="6_cm17x"]
 [ext_resource type="Texture2D" uid="uid://clmfrqiq4s5ib" path="res://graphics/lights/overlays/infrastructure.png" id="6_knae8"]
+[ext_resource type="PackedScene" uid="uid://bjogmp0e0cux0" path="res://Scenes/Items/item.tscn" id="13_2x1k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7m63"]
 size = Vector2(264, 900.5)
@@ -102,6 +103,7 @@ texture_scale = 3.0
 
 [node name="Lights" parent="." index="3"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Lattice" type="Sprite2D" parent="Lights" index="0"]
 self_modulate = Color(1, 1, 1, 0.0784314)
@@ -190,5 +192,8 @@ blend_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
 position = Vector2(4582, -1180)
 shape = SubResource("RectangleShape2D_l7m63")
+
+[node name="Item" parent="." index="7" instance=ExtResource("13_2x1k1")]
+position = Vector2(1185, -1073)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]
