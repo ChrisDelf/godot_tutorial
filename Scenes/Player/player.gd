@@ -11,6 +11,7 @@ var speed: int = max_speed
 #custom signals
 signal laser(position, direction)
 signal grenade(position, direction)
+#signal update_stats
 
 func _process(_delta):
 	
@@ -19,6 +20,7 @@ func _process(_delta):
 	velocity = direction * speed
 	#move and slide uses slider already
 	move_and_slide()
+	Globals.player_pos = global_position
 	
 	# rotate
 	look_at(get_global_mouse_position())
@@ -57,3 +59,6 @@ func _on_laser_cooldown_timeout():
 
 func _on_grenade_timer_timeout():
 	can_grenade = true
+
+
+	
