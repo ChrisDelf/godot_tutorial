@@ -20,6 +20,7 @@ func _process(_delta):
 	velocity = direction * speed
 	#move and slide uses slider already
 	move_and_slide()
+	Globals.player_pos = global_position
 	
 	# rotate
 	look_at(get_global_mouse_position())

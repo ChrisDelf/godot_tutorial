@@ -88,6 +88,7 @@ texture_region_size = Vector2i(390, 390)
 3:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_nwy7m")
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 14, 33, -26, 77, -50, 133, -66, 195, -74, 195, 66, 139, 80, 95, 106, 73, 154, 71, 195, -71, 195, -71, 136, -53, 76)
 4:0/0 = 0
 4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_2sdhc")
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
