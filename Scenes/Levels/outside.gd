@@ -12,7 +12,6 @@ func _deferred_scene_transition():
 
 
 func _on_house_player_entered():
-	print("pooper")
 	var tween = get_tree().create_tween()
 	#zooms in when the character enters the house.
 	tween.tween_property($Player/Camera2D, "zoom", Vector2(1,1),1).set_trans(Tween.TRANS_QUAD)
