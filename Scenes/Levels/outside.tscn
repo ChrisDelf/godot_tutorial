@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cd0xsqxvdvpe2"]
+[gd_scene load_steps=18 format=3 uid="uid://cd0xsqxvdvpe2"]
 
 [ext_resource type="PackedScene" uid="uid://bkij6k8fr8uig" path="res://Scenes/Levels/level.tscn" id="1_hvdwk"]
 [ext_resource type="Script" path="res://Scenes/Levels/outside.gd" id="2_efuha"]
@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://67bkgumsitrn" path="res://Scenes/Objects/SteamVent/steam_vent.tscn" id="7_gtoqh"]
 [ext_resource type="PackedScene" uid="uid://kvck00fcqhaq" path="res://Scenes/Objects/LightFanAnimations/light_fan_animations.tscn" id="8_ls3gx"]
 [ext_resource type="PackedScene" uid="uid://cy8l0q357pdib" path="res://Scenes/Objects/WallLamp/wall_lamp.tscn" id="11_hn6ca"]
+[ext_resource type="PackedScene" uid="uid://cveec3x86plxp" path="res://Scenes/Enemy/car.tscn" id="13_6p1k3"]
 [ext_resource type="PackedScene" uid="uid://bjogmp0e0cux0" path="res://Scenes/Items/item.tscn" id="14_5pb0y"]
-[ext_resource type="PackedScene" uid="uid://bod7ghs5atfq0" path="res://Scenes/Enemy/bug.tscn" id="14_233a7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86qko"]
 resource_name = "walls"
@@ -97,13 +97,23 @@ physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_86qko")
 sources/1 = SubResource("TileSetAtlasSource_fgeha")
 
+[sub_resource type="Curve2D" id="Curve2D_6o6ak"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -165, 1534, 0, 0, 0, 0, -300, 1850, 181.634, -275.814, -181.634, 275.814, -912, 2301, 316.177, -13.4543, -316.177, 13.4543, -1558, 2449, 0, 0, 0, 0, -2311, 2482, 329.631, -33.6359, -329.631, 33.6359, -2709, 2230, 127.816, 33.6359, -127.816, -33.6359, -3257, 2248, -161.452, 275.814, 161.452, -275.814, -3472, 1628, -195.088, 390.176, 195.088, -390.176, -4218, 641, -706.353, -201.815, 706.353, 201.815, -3354, -498, -578.537, 221.997, 578.537, -221.997, -1450, -606, 0, 0, 0, 0, -165, 1534)
+}
+point_count = 12
+
 [node name="Outside" instance=ExtResource("1_hvdwk")]
 script = ExtResource("2_efuha")
+metadata/_edit_lock_ = true
+
+[node name="Decals" parent="." index="0"]
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Decals" index="0"]
 
-[node name="Gate" parent="." index="2" instance=ExtResource("2_eqrxr")]
-position = Vector2(491, -1307)
+[node name="Ground" parent="." index="1"]
+metadata/_edit_lock_ = true
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 z_index = -2
@@ -111,12 +121,14 @@ texture_repeat = 2
 position = Vector2(436, 544)
 texture = ExtResource("2_xu4ce")
 region_enabled = true
-region_rect = Rect2(-1753.15, -898.367, 6378.85, 4911.04)
+region_rect = Rect2(30000, 300000, 30000, 300000)
+metadata/_edit_lock_ = true
 
 [node name="Decoration" type="Sprite2D" parent="Ground" index="1"]
 modulate = Color(0.988235, 0.882353, 0.568627, 1)
 position = Vector2(1543, 577)
 texture = ExtResource("3_253k8")
+metadata/_edit_lock_ = true
 
 [node name="TileMap2" type="TileMap" parent="Ground" index="2"]
 z_index = -1
@@ -127,9 +139,11 @@ layer_0/name = "Soil"
 layer_0/tile_data = PackedInt32Array(-262135, 65537, 1, -196599, 1, 1, -131063, 1, 1, -65527, 1, 1, 9, 1, 1, 65545, 1, 1, -262134, 65537, 1, -196598, 65537, 1, -131062, 65537, 1, -65526, 65537, 1, 10, 65537, 1, 65546, 65537, 1, 131081, 65537, 1, 196617, 65537, 1, 262153, 65537, 1, 327689, 65537, 1, 393225, 65537, 1, 458761, 65537, 1, 131082, 65537, 1, 196618, 65537, 1, 262154, 65537, 1, 327690, 65537, 1, 393226, 65537, 1, 458762, 65537, 1, 131083, 65537, 1, 196619, 65537, 1, 262155, 65537, 1, 327691, 65537, 1, 393227, 65537, 1, 458763, 65537, 1, -393213, 65537, 1, -327677, 65537, 1, -262141, 65537, 1, -393212, 65537, 1, -327676, 65537, 1, -262140, 65537, 1, -393211, 65537, 1, -327675, 65537, 1, -262139, 65537, 1, -393210, 65537, 1, -327674, 65537, 1, -262138, 65537, 1, -393209, 65537, 1, -327673, 65537, 1, -262137, 65537, 1, -393208, 65537, 1, -327672, 65537, 1, -262136, 65537, 1, -393207, 65537, 1, -327671, 65537, 1, -393206, 65537, 1, -327670, 65537, 1)
 layer_1/name = "Walls"
 layer_1/tile_data = PackedInt32Array(-262138, 65536, 0, -262137, 65536, 0, -262136, 65536, 0, -262135, 65536, 0, -262134, 131072, 1, -196598, 0, 2, -131062, 0, 2, -65526, 0, 2, 65546, 131072, 2, 65545, 65536, 1, 131081, 0, 2, 196617, 0, 2, 262153, 0, 2, 327689, 0, 2, 393225, 131072, 2, 10, 0, 2)
+metadata/_edit_lock_ = true
 
 [node name="House" parent="Ground" index="3" instance=ExtResource("4_apdd1")]
 position = Vector2(1231, 2122)
+metadata/_edit_lock_ = true
 
 [node name="SteamVent" parent="Ground" index="4" instance=ExtResource("7_gtoqh")]
 position = Vector2(6, 555)
@@ -142,15 +156,47 @@ rotation = -1.57952
 position = Vector2(3146, 1173)
 rotation = -1.54697
 
-[node name="Item" parent="." index="5" instance=ExtResource("14_5pb0y")]
-position = Vector2(1838, -110)
-
-[node name="Lights" parent="." index="7"]
+[node name="TileMap" parent="Ground" index="7"]
 metadata/_edit_lock_ = true
 
-[node name="Bug" parent="." index="11" instance=ExtResource("14_233a7")]
-position = Vector2(-1551, 852)
+[node name="Gate" parent="." index="2" instance=ExtResource("2_eqrxr")]
+position = Vector2(491, -1307)
+metadata/_edit_lock_ = true
 
-[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[node name="Projectiles" parent="." index="3"]
+metadata/_edit_lock_ = true
+
+[node name="Items" parent="." index="4"]
+position = Vector2(-153, -28)
+metadata/_edit_lock_ = true
+
+[node name="Item" parent="." index="5" instance=ExtResource("14_5pb0y")]
+position = Vector2(1838, -110)
+metadata/_edit_lock_ = true
+
+[node name="Lights" parent="." index="6"]
+metadata/_edit_lock_ = true
+
+[node name="Enemies" parent="." index="7"]
+position = Vector2(-1018, -277)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." index="8"]
+position = Vector2(352, -116)
+metadata/_edit_lock_ = true
+
+[node name="Entity" parent="." index="10"]
+metadata/_edit_lock_ = true
+
+[node name="CarPath" type="Path2D" parent="." index="11"]
+position = Vector2(27, 208)
+curve = SubResource("Curve2D_6o6ak")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("13_6p1k3")]
+position = Vector2(-3283.41, 2237.97)
+rotation = -2.6907
+progress = 3675.24
+
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
 [connection signal="player_leave" from="Ground/House" to="." method="_on_house_player_leave"]
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

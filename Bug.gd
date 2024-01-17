@@ -53,6 +53,7 @@ func _on_animated_sprite_2d_animation_finished():
 	if player_near:
 		Globals.health -= 5
 		$Timers/AttackTimer.start()
+		
 
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("attack")
