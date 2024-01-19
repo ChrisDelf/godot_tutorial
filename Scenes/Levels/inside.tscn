@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ixr2j0sj6lf1" path="res://graphics/lights/overlays/hole.png" id="5_lmm3c"]
 [ext_resource type="PackedScene" uid="uid://kvck00fcqhaq" path="res://Scenes/Objects/LightFanAnimations/light_fan_animations.tscn" id="5_uw6sa"]
 [ext_resource type="PackedScene" uid="uid://ce7vd0ntei3uf" path="res://Scenes/Objects/Box/box.tscn" id="6_1ueej"]
-[ext_resource type="Texture2D" uid="uid://bllsqk2kqi8l5" path="res://graphics/lights/textures/circle.png" id="6_cm17x"]
 [ext_resource type="Texture2D" uid="uid://clmfrqiq4s5ib" path="res://graphics/lights/overlays/infrastructure.png" id="6_knae8"]
 [ext_resource type="PackedScene" uid="uid://de45sjttvmy3y" path="res://Scenes/Objects/Bed/bed.tscn" id="8_1ha12"]
 [ext_resource type="Texture2D" uid="uid://d0xbu36ee1pri" path="res://graphics/objects/infestation/large.png" id="10_ynafm"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://yd8hhuko5rkk" path="res://graphics/objects/infestation/small_4.png" id="16_st5vt"]
 [ext_resource type="Texture2D" uid="uid://c10pk3deivmp" path="res://graphics/objects/infestation/spikes.png" id="17_ybhok"]
 [ext_resource type="Texture2D" uid="uid://d0jucn8kqsifh" path="res://graphics/objects/corner.png" id="18_6ss5l"]
+[ext_resource type="PackedScene" uid="uid://cd14fdcuqq0fc" path="res://Scenes/Enemy/drone.tscn" id="25_3mhv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7m63"]
 size = Vector2(264, 900.5)
@@ -200,6 +200,7 @@ rotation = 3.01746
 texture = ExtResource("18_6ss5l")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Infestation" index="10"]
+position = Vector2(-9, 4)
 collision_layer = 4
 collision_mask = 11
 
@@ -248,16 +249,7 @@ position = Vector2(1185, -1073)
 [node name="Items" parent="." index="7"]
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." index="8"]
-position = Vector2(3363, -1236)
-metadata/_edit_lock_ = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
-energy = 0.75
-texture = ExtResource("6_cm17x")
-texture_scale = 3.0
-
-[node name="Lights" parent="." index="9"]
+[node name="Lights" parent="." index="8"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -339,10 +331,19 @@ position = Vector2(-3544, -4036)
 rotation = 0.523598
 scale = Vector2(2.87665, 2.61945)
 
+[node name="Player" parent="." index="10"]
+position = Vector2(3864, -1226)
+
 [node name="Small" type="Sprite2D" parent="." index="11"]
 position = Vector2(-3129, -4850)
 rotation = 1.35795
 scale = Vector2(3.47728, 1.84615)
 texture = ExtResource("13_6wf7x")
+
+[node name="Entity" parent="." index="13"]
+position = Vector2(480, 265)
+
+[node name="Drone" parent="." index="14" instance=ExtResource("25_3mhv2")]
+position = Vector2(-1176, -840)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

@@ -13,6 +13,9 @@ signal laser(position, direction)
 signal grenade(position, direction)
 #signal update_stats
 
+func hit():
+	Globals.health -= 10
+
 func _process(_delta):
 	
 	#input

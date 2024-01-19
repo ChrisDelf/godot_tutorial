@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://cveec3x86plxp"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/car.gd" id="1_4bfrp"]
+[ext_resource type="Texture2D" uid="uid://b1dnjaf3rs3mk" path="res://graphics/car/main.png" id="1_iupr0"]
+[ext_resource type="Texture2D" uid="uid://cup4h0uh8wj4j" path="res://graphics/car/turret.png" id="3_6nea2"]
+[ext_resource type="Texture2D" uid="uid://bdb3do8gaprjj" path="res://graphics/explosions/gun.png" id="4_4tg4t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3aomc"]
+radius = 801.006
+
+[sub_resource type="Animation" id="Animation_4g0nj"]
+resource_name = "laser_load"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/RayCast2D/Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/RayCast2D2/Line2D2:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Turret/MuzzleFlash1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Turret/MuzzleFlash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsorm"]
+_data = {
+"laser_load": SubResource("Animation_4g0nj")
+}
+
+[node name="Car" type="PathFollow2D"]
+script = ExtResource("1_4bfrp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 11
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(66, -129, 68, -164, 93, -169, 130, -170, 161, -169, 177, -163, 197, -159, 206, -159, 231, -119, 232, -94, 243, -89, 245, -61, 236, -54, 235, -32, 245, -28, 245, 31, 237, 34, 237, 60, 245, 64, 245, 89, 234, 91, 233, 118, 206, 162, 195, 160, 173, 165, 153, 172, 117, 171, 83, 169, 66, 165, 61, 139, 65, 119, 3, 131, -24, 108, -32, 114, -28, 141, -34, 169, -40, 172, -69, 180, -95, 180, -121, 180, -150, 174, -167, 173, -172, 148, -172, 129, -167, 114, -163, 109, -144, 109, -148, 94, -139, 85, -166, 81, -170, 51, -195, 46, -211, 51, -217, 40, -232, 41, -236, 33, -235, -27, -227, -36, -217, -39, -214, -47, -203, -47, -196, -43, -187, -46, -174, -46, -167, -79, -138, -76, -144, -91, -145, -106, -164, -107, -172, -124, -167, -170, -147, -170, -111, -175, -76, -178, -48, -169, -36, -168, -29, -141, -30, -118, -33, -108, -33, -96, 6, -130, 66, -116)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(60, 1)
+rotation = 1.5708
+texture = ExtResource("1_iupr0")
+
+[node name="NoticeArea" type="Area2D" parent="."]
+collision_layer = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoticeArea"]
+shape = SubResource("CircleShape2D_3aomc")
+
+[node name="Turret" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret"]
+rotation = 1.5708
+texture = ExtResource("3_6nea2")
+
+[node name="RayCast2D" type="RayCast2D" parent="Turret"]
+position = Vector2(112, 29)
+target_position = Vector2(688, 0)
+
+[node name="Line2D" type="Line2D" parent="Turret/RayCast2D"]
+points = PackedVector2Array(0, -57, 685, -57)
+width = 0.0
+default_color = Color(0.968627, 0.109804, 0.160784, 0.686275)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Turret"]
+position = Vector2(112, -28)
+target_position = Vector2(688, 0)
+
+[node name="Line2D2" type="Line2D" parent="Turret/RayCast2D2"]
+position = Vector2(0, 57)
+points = PackedVector2Array(0, 1, 685, 0)
+width = 0.0
+default_color = Color(0.968627, 0.109804, 0.160784, 0.686275)
+
+[node name="MuzzleFlash2" type="Sprite2D" parent="Turret"]
+visible = false
+position = Vector2(189, 27)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_4tg4t")
+
+[node name="MuzzleFlash1" type="Sprite2D" parent="Turret"]
+visible = false
+position = Vector2(188, -31)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_4tg4t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wsorm")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

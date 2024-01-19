@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://0v2iknby70nm"]
+[gd_scene load_steps=7 format=3 uid="uid://0v2iknby70nm"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/scout.gd" id="1_iplq8"]
 [ext_resource type="Texture2D" uid="uid://0wciltlh2h5n" path="res://graphics/enemies/scout.png" id="1_oyjgk"]
+[ext_resource type="Shader" path="res://Scenes/Enemy/scout.gdshader" id="2_470u5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etg73"]
+shader = ExtResource("2_470u5")
+shader_parameter/color = Color(0.992157, 0.517647, 0.560784, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y7615"]
 radius = 54.0
@@ -9,28 +15,34 @@ radius = 54.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_edfng"]
 radius = 736.22
 
-[node name="Scout" type="CharacterBody2D" groups=["Scouts"]]
+[node name="Scout" type="CharacterBody2D" groups=["Entity", "Scouts"]]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_iplq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_etg73")
 position = Vector2(25, 29)
 rotation = 1.5708
 texture = ExtResource("1_oyjgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-20, 0)
 shape = SubResource("CircleShape2D_y7615")
+metadata/_edit_lock_ = true
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 16
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_edfng")
 metadata/_edit_lock_ = true
 
 [node name="LaserSpawnPositions" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="LaserSpawnPositions"]
 position = Vector2(106, -25)
@@ -38,8 +50,15 @@ position = Vector2(106, -25)
 [node name="Marker2D2" type="Marker2D" parent="LaserSpawnPositions"]
 position = Vector2(114, 15)
 
-[node name="LaserCooldown" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="LaserTimer" type="Timer" parent="Timers"]
+
+[node name="HitTimer" type="Timer" parent="Timers"]
+wait_time = 0.518
+one_shot = true
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-[connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="Timers/LaserTimer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="Timers/HitTimer" to="." method="_on_hit_timer_timeout"]
