@@ -53,6 +53,7 @@ func _on_attack_area_body_entered(_body):
 
 func _on_attack_area_body_exited(_body):
 	player_near = false
+	$AnimationPlayer.play("walk")
 	
 func attack():
 	if player_near:

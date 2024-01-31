@@ -13,13 +13,17 @@ func hit():
 		health_amount -= 10
 		$AnimatedSprite2D.material.set_shader_parameter("progress", 0.8)
 		$Particles/HitParticles.emitting = true
+		$AudioStreamPlayer2D.play()
 	if health_amount <= 0:
 		await get_tree().create_timer(0.5).timeout
 		queue_free()
 
 func _process(_delta):
+	
 	var direction = (Globals.player_pos - position).normalized()
-	velocity = direction * speed
+
+	velocity = (direction * speed)
+	print(velocity)
 	if active:
 		move_and_slide()
 		look_at(Globals.player_pos)
