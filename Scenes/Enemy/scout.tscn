@@ -23,15 +23,12 @@ script = ExtResource("1_iplq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_etg73")
-position = Vector2(25, 29)
 rotation = 1.5708
 texture = ExtResource("1_oyjgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-20, 0)
+position = Vector2(-47, -24)
 shape = SubResource("CircleShape2D_y7615")
-metadata/_edit_lock_ = true
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 16
@@ -45,10 +42,10 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="LaserSpawnPositions"]
-position = Vector2(102, -26)
+position = Vector2(81, -54)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserSpawnPositions"]
-position = Vector2(115, 12)
+position = Vector2(91, -15)
 
 [node name="Timers" type="Node" parent="."]
 

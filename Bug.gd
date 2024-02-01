@@ -20,10 +20,10 @@ func hit():
 
 func _process(_delta):
 	
-	var direction = (Globals.player_pos - position).normalized()
+	var direction: Vector2 = (Globals.player_pos - position).normalized()
 
 	velocity = (direction * speed)
-	print(velocity)
+	
 	if active:
 		move_and_slide()
 		look_at(Globals.player_pos)
