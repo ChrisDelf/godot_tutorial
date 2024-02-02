@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce7vd0ntei3uf"]
+[gd_scene load_steps=6 format=3 uid="uid://ce7vd0ntei3uf"]
 
 [ext_resource type="PackedScene" uid="uid://dpdagpm8o1bfs" path="res://Scenes/Objects/item_container.tscn" id="1_bjltm"]
 [ext_resource type="Script" path="res://Scenes/Objects/Box/box.gd" id="2_ol2uh"]
 [ext_resource type="Texture2D" uid="uid://bu3i2or04l1sn" path="res://graphics/objects/box/base.png" id="3_j2yon"]
 [ext_resource type="Texture2D" uid="uid://nukvp1idb2mv" path="res://graphics/objects/box/lid.png" id="4_mtgcq"]
+[ext_resource type="AudioStream" uid="uid://d2v23xcmat3tp" path="res://audio/solid_impact.ogg" id="5_e4mgd"]
 
 [node name="Box" instance=ExtResource("1_bjltm")]
 script = ExtResource("2_ol2uh")
@@ -49,3 +50,6 @@ position = Vector2(153, -47)
 
 [node name="Marker2D10" type="Marker2D" parent="SpawnPositions" index="9"]
 position = Vector2(150, 31)
+
+[node name="HitAudio" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("5_e4mgd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cd0xsqxvdvpe2"]
+[gd_scene load_steps=23 format=3 uid="uid://cd0xsqxvdvpe2"]
 
 [ext_resource type="PackedScene" uid="uid://bkij6k8fr8uig" path="res://Scenes/Levels/level.tscn" id="1_hvdwk"]
 [ext_resource type="Script" path="res://Scenes/Levels/outside.gd" id="2_efuha"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cy8l0q357pdib" path="res://Scenes/Objects/WallLamp/wall_lamp.tscn" id="11_hn6ca"]
 [ext_resource type="PackedScene" uid="uid://cveec3x86plxp" path="res://Scenes/Enemy/car.tscn" id="13_6p1k3"]
 [ext_resource type="PackedScene" uid="uid://bjogmp0e0cux0" path="res://Scenes/Items/item.tscn" id="14_5pb0y"]
-[ext_resource type="PackedScene" uid="uid://piv7u5e7wort" path="res://Scenes/Enemy/hunter.tscn" id="14_l8f8l"]
+[ext_resource type="PackedScene" uid="uid://piv7u5e7wort" path="res://Scenes/Enemy/hunter.tscn" id="15_nim10"]
+[ext_resource type="PackedScene" uid="uid://bod7ghs5atfq0" path="res://Scenes/Enemy/bug.tscn" id="16_1eowi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86qko"]
 resource_name = "walls"
@@ -208,11 +209,13 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Enemies" parent="." index="7"]
-position = Vector2(-1018, -277)
 metadata/_edit_lock_ = true
 
-[node name="Hunter" parent="Enemies" index="0" instance=ExtResource("14_l8f8l")]
-position = Vector2(2081, 842)
+[node name="Bug" parent="Enemies" index="0" instance=ExtResource("16_1eowi")]
+position = Vector2(1433, 1508)
+
+[node name="Hunter" parent="Enemies" index="1" instance=ExtResource("15_nim10")]
+position = Vector2(5672.65, 574.485)
 
 [node name="Player" parent="." index="8"]
 position = Vector2(352, -116)

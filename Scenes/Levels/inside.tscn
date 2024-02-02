@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bwigldtvqgkr0"]
+[gd_scene load_steps=29 format=3 uid="uid://bwigldtvqgkr0"]
 
 [ext_resource type="PackedScene" uid="uid://bkij6k8fr8uig" path="res://Scenes/Levels/level.tscn" id="1_w2l05"]
 [ext_resource type="PackedScene" uid="uid://c756wyoe6i15b" path="res://Scenes/Objects/Toilet/toilet.tscn" id="2_t6400"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://c10pk3deivmp" path="res://graphics/objects/infestation/spikes.png" id="17_ybhok"]
 [ext_resource type="Texture2D" uid="uid://d0jucn8kqsifh" path="res://graphics/objects/corner.png" id="18_6ss5l"]
 [ext_resource type="PackedScene" uid="uid://cd14fdcuqq0fc" path="res://Scenes/Enemy/drone.tscn" id="25_3mhv2"]
+[ext_resource type="PackedScene" uid="uid://bod7ghs5atfq0" path="res://Scenes/Enemy/bug.tscn" id="25_kjy0j"]
+[ext_resource type="PackedScene" uid="uid://0v2iknby70nm" path="res://Scenes/Enemy/scout.tscn" id="26_od5u1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7m63"]
 size = Vector2(264, 900.5)
@@ -330,6 +332,12 @@ position = Vector2(-1269, -2356)
 position = Vector2(-3544, -4036)
 rotation = 0.523598
 scale = Vector2(2.87665, 2.61945)
+
+[node name="Bug" parent="Enemies" index="0" instance=ExtResource("25_kjy0j")]
+position = Vector2(1155, -1525)
+
+[node name="Scout" parent="Enemies" index="1" instance=ExtResource("26_od5u1")]
+position = Vector2(-1352, -3594)
 
 [node name="Player" parent="." index="10"]
 position = Vector2(3864, -1226)

@@ -6,6 +6,7 @@ var direction: Vector2 = Vector2.UP
 func _ready():
 	$Selfdestruct.start()
 	
+	
 func _process(delta):
 	position += direction * speed * delta
 	
